@@ -9,12 +9,12 @@ def print_directory_contents(sPath):
     Эта функция подобна os.walk. Использовать функцию os.walk нельзя. Данная задача показывает ваше умение работать с
     вложенными структурами.
     """
-    dir_list = os.listdir(sPath)
-    file_list = list()
-    dir_list = list()
-    get_files = lambda x: (elem for elem in os.listdir(x) if os.path.isfile(os.path.join(x, elem)))
-    get_dirs = lambda x: (elem for elem in os.listdir(x) if os.path.isdir(os.path.join(x, elem)))
-
+    for elem in os.listdir(sPath):
+        if os.path.isdir(elem):
+            new_path = os.path.join(sPath, elem)
+            print_directory_contents(new_path)
+        else:
+            print(elem)
 
 
 if __name__ == '__main__':
