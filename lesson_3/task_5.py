@@ -1,10 +1,12 @@
 import os
+import sys
 
 
-def exchange_numbers(row: str):
-    # Заменяет значение в идущее в начале строки (число) на такое же текстовое в конце строки
+def exchange_numbers(row):
+    # Заменяет значение в идущее в начале строки (число)
+    # на такое же текстовое в конце строки
 
-    num, phrase = row.split(' ')
+    _, phrase = row.split(' ')
     return ' '.join([phrase, phrase + '\n'])
 
 
@@ -31,6 +33,8 @@ def main():
         old_text_lines = read_file(path).split('\n')
         for line in old_text_lines:
             new_text_list.append(exchange_numbers(line))
+    else:
+        sys.exit(1)
     rewrite_file(path, ''.join(new_text_list))
 
 
